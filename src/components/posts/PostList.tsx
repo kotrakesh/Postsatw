@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from "react";
-import { getPosts } from "../services/Posts";
-import { Post } from "../models/post";
+import { getPosts } from "../../services/postApiService";
+import { Post } from "../../models/post";
 
 
 const PostList:React.FC=() => {
@@ -13,10 +13,11 @@ const PostList:React.FC=() => {
         <ul>
           {posts && posts.map(post => (
             <li key={post.id}>
-              {post.title}{' '}
+              <a href={`/details/${post.id}`}>{post.title}{' '}</a>
              
-              <img width={300} src={post.image_url} />
+              <img alt={post.title} width={300} src={post.image_url} />
               {post.content}{' '}
+              <a href={`/edit/${post.id}`}>edit</a>
               <button >Delete</button>
             </li>
           ))}
