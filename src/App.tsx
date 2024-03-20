@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme'; // Import your custom theme
+import theme from './theme';
 import './App.css';
 import '@fontsource/inter';
 import MenuDrawer from './components/MenuDrawer';
