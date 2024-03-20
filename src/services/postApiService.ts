@@ -38,11 +38,12 @@ export const getPost= async(id:number):Promise<Post|null> =>{
 }
 
 export const savePost=async(post:Post):Promise<Post|null>=> {
-    const url = `${API_URL}/api/v1/posts/`;
+    const url = `${API_URL}/api/v1/posts`;
     try {
         const response = await fetch(url,{
             method: "POST",
-            body: JSON.stringify(post),
+            headers: {'Content-Type': 'application/json'}, 
+            body: JSON.stringify({post:post}),
           });
         const data = await response.json();
         return data;
@@ -57,6 +58,7 @@ export const updatePost=async(id:number,post:Post):Promise<Post|null>=> {
     try {
         const response = await fetch(url,{
             method: "PUT",
+            headers: {'Content-Type': 'application/json'}, 
             body: JSON.stringify(post),
           });
         const data = await response.json();

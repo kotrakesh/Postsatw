@@ -17,11 +17,21 @@ const PostForm:React.FC<PostFormProps>=({post,onSubmit}) => {
  }
  return(
     <form onSubmit={handleSubmit(handleFormSubmit)}>
+        <label>Title
         <input type="text"  {...register("title")} />
+        </label>
+        <label>Content
         <input type="text" {...register("content")}  />
+        </label>
+        <label>image url
         <input type="text" {...register("image_url")}  />
+        </label>
+        <label>lat
         <input type="text" {...register("lat")}  />
+        </label>
+        <label>long
         <input type="text" {...register("long")}/>
+        </label>
         <button type="submit">{post?"Update":"Add"}</button>
     </form>
  )
