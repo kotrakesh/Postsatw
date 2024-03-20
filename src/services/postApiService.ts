@@ -32,7 +32,7 @@ export const getPost= async(id:number):Promise<Post|null> =>{
       return data;
     }catch (error) {
         console.error('Error:', error);
-    return null;
+        return null;
     }
 
 }
@@ -69,14 +69,16 @@ export const updatePost=async(id:number,post:Post):Promise<Post|null>=> {
       }
 
 };
-export const deletePost=async(id:number):Promise<Post|null>=> {
+export const deletePost=async(id:number):Promise<null>=> {
     const url = `${API_URL}/api/v1/posts/${id}`;
     try {
         const response = await fetch(url,{
             method: "DELETE",
           });
-        const data = await response.json();
-        return data;
+          if(response){
+            
+          }
+        return null;
       } catch (error) {
         console.error('Error deleting post:', error);
         return null;

@@ -2,27 +2,32 @@ import React, {useEffect,useState} from "react";
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import { getPosts } from "../../services/postApiService";
 import { Post } from "../../models/post";
+import { Loader } from "../atoms";
+import { DeletePostButton,EditPostButton } from "../molecules";
 
 const PostList:React.FC=() => {
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'title', headerName: 'Title', width: 130 },
+    { field: 'title', headerName: 'Title', width: 130 ,
+    renderCell: (params: GridRenderCellParams)=> (<a href={`/details/${params.row.id}`}>{params.row.title}</a>),},
     { field: 'content', headerName: 'content', width: 130,sortable: false },
     {
       field: 'image_url',
       headerName: 'image',
       sortable: false,
       width: 100,
-      renderCell: (params: GridRenderCellParams) =>( <img width={100} src={params.value} alt= {params.row.title || ''}/>),
+      renderCell: (params: GridRenderCellParams) =>( <img width={100} src={params.value} alt= {params.row.title || ''} key={params.row.id}/>),
     },
     { field: 'lat', headerName: 'Latitude', width: 130 },
     { field: 'long', headerName: 'Longitude', width: 130 },
     { field: 'created_at', headerName: 'Created on',  },
     { field: 'edit', headerName: 'Edit',
-     renderCell: (params: GridRenderCellParams)=> (<a href={`/edit/${params.row.id}`}>Edit</a>),
+     renderCell: (params: GridRenderCellParams)=> (<EditPostButton id={params.row.id} key={`del_${params.row.id}`}/>),
    },
-
+   { field: 'Delete', headerName: 'Edit',
+   renderCell: (params: GridRenderCellParams)=> (<DeletePostButton id={params.row.id} key={`del_${params.row.id}`}/>),
+ }
 
 
   ];
@@ -43,7 +48,7 @@ const PostList:React.FC=() => {
           autoHeight={true}
           pageSizeOptions={[5, 10]}
           />
-        </div>) :<p>loading</p>);
+        </div>) :<Loader loading={false} />);
 }
 
 export default PostList;

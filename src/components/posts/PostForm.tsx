@@ -1,7 +1,7 @@
 import React from "react";
 import {useForm} from "react-hook-form"
 import { Post } from "../../models/post";
-import { InputField } from "../atoms";
+import { Button, InputField } from "../atoms";
 import FormControl from "@mui/joy/FormControl";
 
 interface PostFormProps{
@@ -35,7 +35,7 @@ const PostForm:React.FC<PostFormProps>=({post,onSubmit}) => {
         <InputField label="longitude" fieldName="long"  params={register("long")} />
         </div>
 
-        <button type="submit">{post?"Update":"Add"}</button>
+        <Button onClick={handleSubmit(handleFormSubmit)} variant="contained">{post?"Update":"Add"}</Button>
     </form>
 
  )
