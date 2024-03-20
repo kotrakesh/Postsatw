@@ -15,7 +15,7 @@ const PostList:React.FC=() => {
             <li key={post.id}>
               <a href={`/details/${post.id}`}>{post.title}{' '}</a>
              
-              <img alt={post.title} width={300} src={post.image_url} />
+              <img width={300} src={post.image_url} alt={post.title}  />
               {post.content}{' '}
               <a href={`/edit/${post.id}`}>edit</a>
               <button >Delete</button>
