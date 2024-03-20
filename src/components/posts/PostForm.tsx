@@ -1,6 +1,8 @@
 import React from "react";
 import {useForm} from "react-hook-form"
 import { Post } from "../../models/post";
+import { InputField } from "../atoms";
+import FormControl from "@mui/joy/FormControl";
 
 interface PostFormProps{
     post?: Post |null;//for edit optional
@@ -17,23 +19,25 @@ const PostForm:React.FC<PostFormProps>=({post,onSubmit}) => {
  }
  return(
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <label>Title
-        <input type="text"  {...register("title")} />
-        </label>
-        <label>Content
-        <input type="text" {...register("content")}  />
-        </label>
-        <label>image url
-        <input type="text" {...register("image_url")}  />
-        </label>
-        <label>lat
-        <input type="text" {...register("lat")}  />
-        </label>
-        <label>long
-        <input type="text" {...register("long")}/>
-        </label>
+         <div>
+        <InputField label="Title" fieldName="title"  params= {register("title")} />
+        </div>
+        
+        <div>
+        <InputField label="Content" fieldName="content"   params={register("content")} />
+        </div>
+        <div>
+        <InputField label="Image url" fieldName="image_url"   params={register("image_url")} />
+        </div>
+        <div>
+        <InputField label="latitude" fieldName="lat"  params={register("lat")} />
+       
+        <InputField label="longitude" fieldName="long"  params={register("long")} />
+        </div>
+
         <button type="submit">{post?"Update":"Add"}</button>
     </form>
+
  )
 }
 
