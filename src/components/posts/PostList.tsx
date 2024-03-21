@@ -5,8 +5,10 @@ import { getPosts } from "../../services/postApiService";
 import { Post } from "../../models/post";
 import { Loader } from "../atoms";
 import { DeletePostButton,EditPostButton } from "../molecules";
-
-const PostList:React.FC=() => {
+interface PostListProps{
+  post?:Post[]
+}
+const PostList:React.FC<PostListProps>=({post=null}) => {
 
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -32,7 +34,7 @@ const PostList:React.FC=() => {
 
 
   ];
-    const [posts, setPosts] = useState<Post[]|null>([]);
+    const [posts, setPosts] = useState<Post[]|null>(post);
     const fetchAllPosts =(cache:RequestCache="no-cache")=>{
       const response=getPosts(cache);
       response.then(data => setPosts(data));

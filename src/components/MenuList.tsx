@@ -28,9 +28,7 @@ const MenuList:React.FC=()=> (
                     <CssBaseline />
                     <AppBar position="fixed" className="whiteBg" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                         <Toolbar>
-                        <Typography variant="h6" noWrap component="div">
-                            Posts Webfox
-                        </Typography>
+                        <Typography variant="h6" noWrap component="div">Posts Wefox</Typography>
                         </Toolbar>
                     </AppBar>
                     <Divider />

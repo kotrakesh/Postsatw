@@ -9,11 +9,13 @@ import { getPost } from "../../services/postApiService";
 import { Post } from "../../models/post";
 import { Button,Loader } from "../atoms";
 import { DeletePostButton } from "../molecules";
+interface PostDetailsProps{
+  postDefault?:Post
+}
 
-
-const PostList:React.FC=() => {
+const PostDetails:React.FC<PostDetailsProps>=({postDefault=null}) => {
     const { id } = useParams<{ id: string }>();
-    const [post, setPost] = useState<Post|null>();
+    const [post, setPost] = useState<Post|null>(postDefault);
     useEffect(() => {
         id && getPost(parseInt(id)).then(data => setPost(data));
       }, [id]);
@@ -38,4 +40,4 @@ const PostList:React.FC=() => {
         </CardActions>
       </Card>: <Loader loading={false} />)}
 
-export default PostList
+export default PostDetails;
