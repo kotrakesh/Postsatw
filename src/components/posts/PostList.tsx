@@ -5,30 +5,30 @@ import { getPosts } from "../../services/postApiService";
 import { Post } from "../../models/post";
 import { Loader } from "../atoms";
 import { DeletePostButton,EditPostButton } from "../molecules";
+import { Grid } from "@mui/material";
 interface PostListProps{
   post?:Post[]
 }
 const PostList:React.FC<PostListProps>=({post=null}) => {
 
   const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'title', headerName: 'Title', width: 130 ,
+    { field: 'id', headerName: 'ID' },
+    { field: 'title', headerName: 'Title', 
     renderCell: (params: GridRenderCellParams)=> (<Link to={`/details/${params.row.id}`}>{params.row.title}</Link>),},
-    { field: 'content', headerName: 'content', width: 130,sortable: false },
+    { field: 'content', headerName: 'Content', sortable: false },
     {
       field: 'image_url',
       headerName: 'image',
       sortable: false,
-      width: 100,
       renderCell: (params: GridRenderCellParams) =>( <img width={100} src={params.value} alt= {params.row.title || ''} key={params.row.id}/>),
     },
-    { field: 'lat', headerName: 'Latitude', width: 130 },
-    { field: 'long', headerName: 'Longitude', width: 130 },
+    { field: 'lat', headerName: 'Latitude',  },
+    { field: 'long', headerName: 'Longitude', },
     { field: 'created_at', headerName: 'Created on',  },
     { field: 'edit', headerName: 'Edit',
      renderCell: (params: GridRenderCellParams)=> (<EditPostButton id={params.row.id} key={`del_${params.row.id}`}/>),
    },
-   { field: 'Delete', headerName: 'Edit',
+   { field: 'Delete', headerName: 'Delete',
    renderCell: (params: GridRenderCellParams)=> (<DeletePostButton id={params.row.id} key={`del_${params.row.id}`} confirmCallBack={fetchAllPosts}/>),
  }
 
@@ -43,19 +43,21 @@ const PostList:React.FC<PostListProps>=({post=null}) => {
         fetchAllPosts("default");
       }, []);
 
-      return(posts ? (<div style={{ width:"80%"}}>
-          <DataGrid
-          rows={posts}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          autoHeight={true}
-          pageSizeOptions={[5, 10]}
-          />
-        </div>) :<Loader loading={false} />);
+      return( posts ? (<Grid container spacing={2}>
+                          <Grid item xs={10}>
+                            <DataGrid
+                            rows={posts}
+                            columns={columns}
+                            initialState={{
+                              pagination: {
+                                paginationModel: { page: 0, pageSize: 5 },
+                              },
+                            }}
+                            autoHeight={true}
+                            pageSizeOptions={[10, 10]}
+                            />
+                          </Grid>
+                          </Grid>) :<Loader loading={false} />);
 }
 
 export default PostList;

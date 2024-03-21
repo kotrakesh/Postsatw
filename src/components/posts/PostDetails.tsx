@@ -9,6 +9,7 @@ import { getPost } from "../../services/postApiService";
 import { Post } from "../../models/post";
 import { Button,Loader } from "../atoms";
 import { DeletePostButton } from "../molecules";
+import { Box } from "@mui/material";
 interface PostDetailsProps{
   postDefault?:Post
 }
@@ -20,7 +21,9 @@ const PostDetails:React.FC<PostDetailsProps>=({postDefault=null}) => {
         id && getPost(parseInt(id)).then(data => setPost(data));
       }, [id]);
 
-      return(post ?<Card sx={{ maxWidth: 500 }}>
+      return(post ?<Box>
+        <h6>{post.title} Details</h6>
+        <Card sx={{ maxWidth: 500 }}>
         <CardMedia
           sx={{ height: 300 }}
           image={post.image_url}
@@ -38,6 +41,6 @@ const PostDetails:React.FC<PostDetailsProps>=({postDefault=null}) => {
         <Button href={`/edit/${post.id}`}>Edit</Button>
         <DeletePostButton id={post.id} />
         </CardActions>
-      </Card>: <Loader loading={false} />)}
+      </Card></Box>: <Loader loading={false} />)}
 
 export default PostDetails;

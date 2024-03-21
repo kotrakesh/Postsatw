@@ -19,6 +19,6 @@ const PostEdit:React.FC=()=>{
     useEffect(() => {
         id && getPost(parseInt(id)).then(data => setPost(data));
       }, [id]);
-    return(post ? <PostForm post={post} onSubmit={handleEditPost}/>:<p>...laoding</p>)
+    return(post ? <><h6>Edit Post</h6><PostForm post={post} onSubmit={handleEditPost}/></>:<p>...laoding</p>)
 }
 export default PostEdit;

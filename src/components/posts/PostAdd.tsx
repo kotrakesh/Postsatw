@@ -16,6 +16,6 @@ const PostAdd:React.FC=()=>{
             setResetFlag(true) 
         });
     }
-    return(<PostForm onSubmit={handleAddPost} resetFlag={resetFlag}/>)
+    return( <><h6>Create Post</h6><PostForm onSubmit={handleAddPost} resetFlag={resetFlag}/></>)
 }
 export default PostAdd;

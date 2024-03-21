@@ -2,10 +2,6 @@
 import { createTheme } from '@mui/material/styles';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 
-const colors={
-    primaryGrayMid:"#808080",
-    primarybackground:"#f7f7fa"
-}
 const theme = createTheme({
   palette: {
     primary: {

@@ -20,6 +20,7 @@ const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,p
       label={label}
       error={error}
       rows={rows}
+      multiline
       helperText={helperText}
       {...params}
     /></FormControl>);
