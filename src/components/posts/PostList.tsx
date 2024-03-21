@@ -1,11 +1,13 @@
 import React, {useEffect,useState} from "react";
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRenderCellParams, GridValueFormatterParams } from '@mui/x-data-grid';
 import { Link } from "react-router-dom"
+import { Grid } from "@mui/material";
+import { format } from "date-fns";
 import { getPosts } from "../../services/postApiService";
 import { Post } from "../../models/post";
 import { Loader } from "../atoms";
 import { DeletePostButton,EditPostButton } from "../molecules";
-import { Grid } from "@mui/material";
+
 interface PostListProps{
   post?:Post[]
 }
@@ -15,20 +17,22 @@ const PostList:React.FC<PostListProps>=({post=null}) => {
     { field: 'id', headerName: 'ID' },
     { field: 'title', headerName: 'Title', 
     renderCell: (params: GridRenderCellParams)=> (<Link to={`/details/${params.row.id}`}>{params.row.title}</Link>),},
-    { field: 'content', headerName: 'Content', sortable: false },
+    { field: 'content', headerName: 'Content', sortable: false, minWidth: 150, },
     {
       field: 'image_url',
       headerName: 'image',
       sortable: false,
       renderCell: (params: GridRenderCellParams) =>( <img width={100} src={params.value} alt= {params.row.title || ''} key={params.row.id}/>),
     },
-    { field: 'lat', headerName: 'Latitude',  },
-    { field: 'long', headerName: 'Longitude', },
-    { field: 'created_at', headerName: 'Created on',  },
+    { field: 'lat', headerName: 'Latitude',  minWidth: 150, },
+    { field: 'long', headerName: 'Longitude',  minWidth: 150,},
+    { field: 'created_at', headerName: 'Created on',  minWidth: 150,
+      valueFormatter:(params:GridValueFormatterParams)=>(format(Date.parse(params.value),"dd.MM.yyyy")),
+     },
     { field: 'edit', headerName: 'Edit',
      renderCell: (params: GridRenderCellParams)=> (<EditPostButton id={params.row.id} key={`del_${params.row.id}`}/>),
    },
-   { field: 'Delete', headerName: 'Delete',
+   { field: 'Delete', headerName: 'Edit',
    renderCell: (params: GridRenderCellParams)=> (<DeletePostButton id={params.row.id} key={`del_${params.row.id}`} confirmCallBack={fetchAllPosts}/>),
  }
 
@@ -50,7 +54,7 @@ const PostList:React.FC<PostListProps>=({post=null}) => {
                             columns={columns}
                             initialState={{
                               pagination: {
-                                paginationModel: { page: 0, pageSize: 5 },
+                                paginationModel: { page: 0, pageSize: 10 },
                               },
                             }}
                             autoHeight={true}
