@@ -38,7 +38,7 @@ const handleFormSubmit =(data:Post)=>{
         </div>
         
         <div>
-        <InputField error={!!errors?.content} label="Content*" fieldName="content" helperText={errors?.content?.message}   params={register("content",{ required: "Content  is Required"})} />
+        <InputField multiline={true} rows={4} error={!!errors?.content} label="Content*" fieldName="content" helperText={errors?.content?.message}   params={register("content",{ required: "Content  is Required"})} />
         </div>
         <div>
         <InputField label="Image url" fieldName="image_url"  params={register("image_url")} />

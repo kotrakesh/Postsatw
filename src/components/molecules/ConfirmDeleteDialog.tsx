@@ -1,4 +1,5 @@
 import React from 'react';
+import { enqueueSnackbar } from 'notistack';
 import ConfirmDialog from './ConfirmDialog';
 import { deletePost } from '../../services/postApiService';
 interface ConfirmDeleteDialogProps{
@@ -9,7 +10,8 @@ interface ConfirmDeleteDialogProps{
 const ConfirmDeleteDialog: React.FC<ConfirmDeleteDialogProps> = ({id,openState,onClose}) => {
     const handleDelete = (idn:number) => {
       const response = idn && deletePost(idn);
-      response && response.then(() =>onClose());
+      response && response.then(() =>{onClose();
+        enqueueSnackbar('Post deleted succefully!');});
     };
     return (
         <ConfirmDialog

@@ -7,9 +7,11 @@ interface InputFieldProps{
       params?:any,
       error?:boolean,
       helperText?:string,
+      multiline?:boolean,
+      rows?:number
 }
   
-const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,params,helperText}) =>{
+const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,params,helperText,multiline=false,rows}) =>{
   return (<FormControl variant="outlined"><TextField 
       // html input attribute
       name={fieldName || ""}
@@ -17,6 +19,7 @@ const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,p
       variant="outlined"
       label={label}
       error={error}
+      rows={rows}
       helperText={helperText}
       {...params}
     /></FormControl>);
