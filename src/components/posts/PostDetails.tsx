@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from "react";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -38,7 +38,7 @@ const PostDetails:React.FC<PostDetailsProps>=({postDefault=null}) => {
           </Typography>
         </CardContent>
         <CardActions>
-        <Button href={`/edit/${post.id}`}>Edit</Button>
+        <Button component={Link} to={`/edit/${post.id}`}>Edit</Button>
         <DeletePostButton id={post.id} />
         </CardActions>
       </Card></Box>: <Loader loading={false} />)}
