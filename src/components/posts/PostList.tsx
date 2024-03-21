@@ -20,7 +20,7 @@ const PostList:React.FC<PostListProps>=({post=null}) => {
     { field: 'content', headerName: 'Content', sortable: false, minWidth: 150, },
     {
       field: 'image_url',
-      headerName: 'image',
+      headerName: 'Image',
       sortable: false,
       renderCell: (params: GridRenderCellParams) =>( <img width={100} src={params.value} alt= {params.row.title || ''} key={params.row.id}/>),
     },
