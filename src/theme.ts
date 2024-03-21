@@ -4,12 +4,15 @@ import type {} from '@mui/x-data-grid/themeAugmentation';
 
 const colors={
     primaryGrayMid:"#808080",
-    primaryGrayDark:"#A9A9A9"
+    primarybackground:"#f7f7fa"
 }
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2', 
+      main: '#301254', 
+    },
+    secondary: {
+      main: '#BF360C', 
     },
     success: {
       main: '#4caf50', 
