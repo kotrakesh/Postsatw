@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Dialog,
   DialogTitle,
@@ -12,9 +12,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Button } from '../atoms';
 interface ConfirmDialogProps{
     message:string,
-    onConfirm:any,
+    onConfirm:()=>void,
     open?:boolean,
-    onClose:any,
+    onClose:()=>void,
 }
 const ConfirmDialog: React.FC<ConfirmDialogProps> = ({message,onConfirm,onClose,open=false}) => {
 

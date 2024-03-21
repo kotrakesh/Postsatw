@@ -6,7 +6,7 @@ interface EditPostButtonProps{
 const EditPostButton: React.FC<EditPostButtonProps> = ({id}) => {
 
     return (
-        <Button href={`/edit/${id}`} key={`edit_${id}`}>Edit</Button>
+        <Button  href={`/edit/${id}`} key={`edit_${id}`}>Edit</Button>
 
     );
   };

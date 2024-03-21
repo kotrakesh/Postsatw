@@ -1,5 +1,6 @@
 import React, {useEffect,useState} from "react";
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { Link } from "react-router-dom"
 import { getPosts } from "../../services/postApiService";
 import { Post } from "../../models/post";
 import { Loader } from "../atoms";
@@ -10,7 +11,7 @@ const PostList:React.FC=() => {
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'title', headerName: 'Title', width: 130 ,
-    renderCell: (params: GridRenderCellParams)=> (<a href={`/details/${params.row.id}`}>{params.row.title}</a>),},
+    renderCell: (params: GridRenderCellParams)=> (<Link to={`/details/${params.row.id}`}>{params.row.title}</Link>),},
     { field: 'content', headerName: 'content', width: 130,sortable: false },
     {
       field: 'image_url',
@@ -26,14 +27,18 @@ const PostList:React.FC=() => {
      renderCell: (params: GridRenderCellParams)=> (<EditPostButton id={params.row.id} key={`del_${params.row.id}`}/>),
    },
    { field: 'Delete', headerName: 'Edit',
-   renderCell: (params: GridRenderCellParams)=> (<DeletePostButton id={params.row.id} key={`del_${params.row.id}`}/>),
+   renderCell: (params: GridRenderCellParams)=> (<DeletePostButton id={params.row.id} key={`del_${params.row.id}`} confirmCallBack={fetchAllPosts}/>),
  }
 
 
   ];
     const [posts, setPosts] = useState<Post[]|null>([]);
+    const fetchAllPosts =(cache:RequestCache="no-cache")=>{
+      const response=getPosts(cache);
+      response.then(data => setPosts(data));
+    }
     useEffect(() => {
-        getPosts().then(data => setPosts(data));
+        fetchAllPosts("default");
       }, []);
 
       return(posts ? (<div style={{ width:"80%"}}>

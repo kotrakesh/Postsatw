@@ -11,10 +11,11 @@ import Loader from './components/atoms/Loader';
 
 function App() {
     return (
-      <BrowserRouter>
+     
         <ThemeProvider theme={theme}>
         <Suspense fallback={<Loader loading={false} />}>
           <Box  sx={{ display: 'flex' }}>
+          <BrowserRouter>
             <MenuDrawer/> 
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
               <Toolbar />
@@ -22,10 +23,11 @@ function App() {
                 <AppRoutes />
               
             </Box>
+            </BrowserRouter>
         </Box>
         </Suspense>
         </ThemeProvider>
-      </BrowserRouter>
+     
       
     );
 }

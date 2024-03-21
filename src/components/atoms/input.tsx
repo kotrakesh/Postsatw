@@ -1,23 +1,23 @@
-import { FormControl } from '@mui/material';
-import TextField from '@mui/material/TextField';
+import { FormControl,TextField } from '@mui/material';
 
 interface InputFieldProps{
-      label?:string;
-      fieldName:string;
-      placeholder?:string;
-      params?:any;
-      error?:boolean;
-
+      label?:string,
+      fieldName:string,
+      placeholder?:string,
+      params?:any,
+      error?:boolean,
+      helperText?:string,
 }
   
-const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,params}) =>{
-  return (<FormControl><TextField 
+const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,params,helperText}) =>{
+  return (<FormControl variant="outlined"><TextField 
       // html input attribute
       name={fieldName || ""}
       placeholder={placeholder || ""}
       variant="outlined"
       label={label}
       error={error}
+      helperText={helperText}
       {...params}
     /></FormControl>);
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup,useMap  } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet';
 import { Box } from '@mui/material';
 import 'leaflet/dist/leaflet.css';
 import { Post } from '../../models/post';
@@ -12,7 +12,7 @@ interface OpenStreetMapProps{
 }
 const OpenStreetMap: React.FC<OpenStreetMapProps> = ({posts,centerLat,centerLong,zoom=5,width="80%"}) => {
   return (
-    <Box sx={{ width: {width}, height: "100vh" }}>
+    <Box sx={{ width: {width}, height: "90vh" }}>
 
     <MapContainer center={[centerLat, centerLong]} zoom={5} scrollWheelZoom={true}>
         <TileLayer
@@ -20,10 +20,10 @@ const OpenStreetMap: React.FC<OpenStreetMapProps> = ({posts,centerLat,centerLong
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {posts.map((post)=>
-        (<Marker position={[post.lat, post.long]}>
+        (<Marker position={[post?.lat || 0, post?.long || 0]}>
             <Popup>
             {post.title} <br />
-            <img alt={post.title} title={post.title} width={80} src={post.image_url}/><br />
+            <img alt={post.title} title={post.title} width={80} src={post?.image_url}/><br />
             <a href={`/details/${post.id}`}>Details</a>
             </Popup>
         </Marker>))}

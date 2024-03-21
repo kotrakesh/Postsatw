@@ -3,14 +3,16 @@ import { Button } from '../atoms';
 import ConfirmDeleteDialog from './ConfirmDeleteDialog';
 interface DeletePostButtonProps{
   id:number,
+  confirmCallBack?:()=>void,
 }
-const DeletePostButton: React.FC<DeletePostButtonProps> = ({id}) => {
+const DeletePostButton: React.FC<DeletePostButtonProps> = ({id,confirmCallBack}) => {
     const [open,setOpen]=useState<boolean>(false);
     const showDeleteDialog= ()=>{
       setOpen(true);
     }
     const onClose = () =>{
       setOpen(false);
+      !!confirmCallBack && confirmCallBack();
     }
     return (
       <>

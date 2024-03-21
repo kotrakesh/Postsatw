@@ -13,7 +13,8 @@ const PostsOnMap = lazy(() => import('./components/posts/PostsOnMap'));
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" 
+            element={<Home />}/>
       <Route path="/details/:id" element={<PostDetails />} />
       <Route path="/create" element={<CreatePost />} />
       <Route path="/edit/:id" element={<EditPost/>} />
