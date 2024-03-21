@@ -61,7 +61,7 @@ const PostList:React.FC<PostListProps>=({post=null}) => {
                             pageSizeOptions={[10, 10]}
                             />
                           </Grid>
-                          </Grid>) :<Loader loading={false} />);
+                          </Grid>) :<Loader loading={true} />);
 }
 
 export default PostList;

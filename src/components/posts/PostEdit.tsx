@@ -4,6 +4,7 @@ import PostForm from "./PostForm";
 import { getPost, updatePost } from "../../services/postApiService";
 import { useParams } from 'react-router-dom';
 import { enqueueSnackbar } from 'notistack'
+import { Loader } from "../atoms";
 
 
 
@@ -19,6 +20,6 @@ const PostEdit:React.FC=()=>{
     useEffect(() => {
         id && getPost(parseInt(id)).then(data => setPost(data));
       }, [id]);
-    return(post ? <><h6>Edit Post</h6><PostForm post={post} onSubmit={handleEditPost}/></>:<p>...laoding</p>)
+    return(post ? <><h6>Edit Post</h6><PostForm post={post} onSubmit={handleEditPost}/></>:<Loader loading={true}></Loader>)
 }
 export default PostEdit;
