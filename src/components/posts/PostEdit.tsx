@@ -7,10 +7,10 @@ import { useParams } from 'react-router-dom';
 
 const PostEdit:React.FC=()=>{
     const { id } = useParams<{ id: string }>();
+    const [post, setPost] = useState<Post|null>();
     const handleEditPost=(data:Post)=>{
        id && updatePost(parseInt(id),data)
     }
-    const [post, setPost] = useState<Post|null>();
     useEffect(() => {
         id && getPost(parseInt(id)).then(data => setPost(data));
       }, [id]);
