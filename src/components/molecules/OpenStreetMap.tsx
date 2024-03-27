@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup  } from 'react-leaflet';
 import { Box } from '@mui/material';
 import 'leaflet/dist/leaflet.css';
 import { Post } from '../../models/post';
+import { isValidLat,isValidLong } from '../../utils/validation';
 interface OpenStreetMapProps{
     posts:Post[],
     centerLat:number,
@@ -19,14 +20,17 @@ const OpenStreetMap: React.FC<OpenStreetMapProps> = ({posts,centerLat,centerLong
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {posts.map((post)=>
-        (<Marker position={[post?.lat || 0, post?.long || 0]}>
-            <Popup>
-            {post.title} <br />
-            <img alt={post.title} title={post.title} width={80} src={post?.image_url}/><br />
-            <a href={`/details/${post.id}`}>Details</a>
-            </Popup>
-        </Marker>))}
+        {posts.map((post,index)=>{
+          if((post?.lat && isValidLat(post.lat) ) && (post?.long && isValidLong(post.long)))
+            { 
+              return (<Marker key={index} position={[post.lat, post.long]}>
+                        <Popup>
+                        {post.title} <br />
+                        <img alt={post.title} title={post.title} width={80} src={post?.image_url}/><br />
+                        <a href={`/details/${post.id}`}>Details</a>
+                        </Popup>
+                    </Marker>)
+        }})}
     </MapContainer>
     </Box>
   );

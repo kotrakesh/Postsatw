@@ -9,10 +9,11 @@ interface InputFieldProps{
       helperText?:string,
       multiline?:boolean,
       rows?:number
+      type?:string
 }
   
-const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,params,helperText,multiline=false,rows}) =>{
-  return (<FormControl variant="outlined"><TextField 
+const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,params,helperText,multiline=false,rows,type="text"}) =>{
+  return (<TextField 
       // html input attribute
       name={fieldName || ""}
       placeholder={placeholder || ""}
@@ -20,10 +21,11 @@ const InputField:React.FC<InputFieldProps>=({label,fieldName,placeholder,error,p
       label={label}
       error={error}
       rows={rows}
-      multiline
+      multiline={multiline}
+      type={type}
       helperText={helperText}
       {...params}
-    /></FormControl>);
+    />);
 }
 
 export default InputField;
