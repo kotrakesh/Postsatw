@@ -6,9 +6,8 @@ interface EditPostButtonProps{
 }
 const EditPostButton: React.FC<EditPostButtonProps> = ({id}) => {
 
-    return (
+      return (
         <Button component={Link} to={`/edit/${id}`} key={`edit_${id}`}>Edit</Button>
-
     );
   };
   

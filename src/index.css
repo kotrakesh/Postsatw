@@ -1,24 +1,26 @@
-@import url("~leaflet/dist/leaflet.css");
+@import url('~leaflet/dist/leaflet.css');
 
-:root{--primary-background: #f7f7fa;
---white-background:'fff';}
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--primary-background);
+:root {
+    --primary-background: #f7f7fa;
+    --white-background: 'fff';
 }
-.white-bg{
-  background-color: #fff;
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--primary-background);
+}
+.white-bg {
+    background-color: #fff;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
 }
 .leaflet-container {
-  width: 100%;
-  height: 80vh;
+    width: 100%;
+    height: 80vh;
 }
