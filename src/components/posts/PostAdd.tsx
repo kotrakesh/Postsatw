@@ -13,9 +13,9 @@ const PostAdd:React.FC=()=>{
         response.then(() =>
         {
             enqueueSnackbar('Post added succefully!');
-            setResetFlag(true) 
+            setResetFlag(true);
         });
     }
-    return( <><h6>Create Post</h6><PostForm onSubmit={handleAddPost} resetFlag={resetFlag}/></>)
+    return( <><h6>Create Post</h6><PostForm onSubmit={handleAddPost} resetFlag={resetFlag} setResetFlag={setResetFlag}/></>)
 }
 export default PostAdd;
