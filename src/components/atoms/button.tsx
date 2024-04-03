@@ -1,10 +1,10 @@
-import React, { ElementType, ReactNode } from 'react'
-import Button from '@mui/material/Button'
+import React, { ElementType, ReactNode } from 'react';
+import Button from '@mui/material/Button';
 interface ButtonAtomProps {
-    isLink?: boolean
-    disabled?: boolean
-    children: ReactNode
-    variant?: 'text' | 'contained' | 'outlined'
+    isLink?: boolean;
+    disabled?: boolean;
+    children: ReactNode;
+    variant?: 'text' | 'contained' | 'outlined';
     color?:
         | 'inherit'
         | 'primary'
@@ -12,10 +12,10 @@ interface ButtonAtomProps {
         | 'success'
         | 'error'
         | 'info'
-        | 'warning'
-    onClick?: any
-    to?: string
-    component?: ElementType<any, any>
+        | 'warning';
+    onClick?: any;
+    to?: string;
+    component?: ElementType<any, any>;
 }
 
 const ButtonAtom: React.FC<ButtonAtomProps> = ({
@@ -38,7 +38,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = ({
         >
             {children}
         </Button>
-    )
-}
+    );
+};
 
-export default ButtonAtom
+export default ButtonAtom;

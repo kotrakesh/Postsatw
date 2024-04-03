@@ -1,6 +1,6 @@
-import React from 'react'
-import { Box } from '@mui/joy'
-import Typography from '@mui/joy/Typography'
+import React from 'react';
+import { Box } from '@mui/joy';
+import Typography from '@mui/joy/Typography';
 
 const NavBar: React.FC = () => {
     return (
@@ -34,7 +34,7 @@ const NavBar: React.FC = () => {
                 </Typography>
             </Box>
         </Box>
-    )
-}
+    );
+};
 
-export default NavBar
+export default NavBar;

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import {
     AppBar,
     Box,
@@ -11,11 +11,11 @@ import {
     ListItemText,
     Toolbar,
     Typography,
-} from '@mui/material'
+} from '@mui/material';
 interface menuLink {
-    id: number
-    menuLabel: string
-    menuUrl: string
+    id: number;
+    menuLabel: string;
+    menuUrl: string;
 }
 const menuLinks: menuLink[] = [
     {
@@ -33,11 +33,11 @@ const menuLinks: menuLink[] = [
         menuLabel: 'Create Post',
         menuUrl: '/create',
     },
-]
+];
 
 const MenuList: React.FC = () => {
-    const location = useLocation()
-    const { pathname } = location
+    const location = useLocation();
+    const { pathname } = location;
     return (
         <>
             <CssBaseline />
@@ -71,7 +71,7 @@ const MenuList: React.FC = () => {
                 <Divider />
             </Box>
         </>
-    )
-}
+    );
+};
 
-export default MenuList
+export default MenuList;

@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import {
     DataGrid,
     GridColDef,
     GridRenderCellParams,
     GridValueFormatterParams,
-} from '@mui/x-data-grid'
-import { Link } from 'react-router-dom'
-import { Grid } from '@mui/material'
-import { format } from 'date-fns'
-import { getPosts } from '../../services/postApiService'
-import { Post } from '../../models/post'
-import { Loader } from '../atoms'
-import { DeletePostButton, EditPostButton } from '../molecules'
+} from '@mui/x-data-grid';
+import { Link } from 'react-router-dom';
+import { Grid } from '@mui/material';
+import { format } from 'date-fns';
+import { getPosts } from '../../services/postApiService';
+import { Post } from '../../models/post';
+import { Loader } from '../atoms';
+import { DeletePostButton, EditPostButton } from '../molecules';
 
 interface PostListProps {
-    post?: Post[]
+    post?: Post[];
 }
 const PostList: React.FC<PostListProps> = ({ post = null }) => {
     const columns: GridColDef[] = [
@@ -36,14 +36,15 @@ const PostList: React.FC<PostListProps> = ({ post = null }) => {
             field: 'image_url',
             headerName: 'Image',
             sortable: false,
-            renderCell: (params: GridRenderCellParams) => (
-                <img
-                    width={100}
-                    src={params.value}
-                    alt={params.row.title || ''}
-                    key={params.row.id}
-                />
-            ),
+            renderCell: (params: GridRenderCellParams) =>
+                params.value && (
+                    <img
+                        width={100}
+                        src={params.value}
+                        alt={params.row.title || ''}
+                        key={params.row.id}
+                    />
+                ),
         },
         { field: 'lat', headerName: 'Latitude', minWidth: 150 },
         { field: 'long', headerName: 'Longitude', minWidth: 150 },
@@ -75,15 +76,15 @@ const PostList: React.FC<PostListProps> = ({ post = null }) => {
                 />
             ),
         },
-    ]
-    const [posts, setPosts] = useState<Post[] | null>(post)
+    ];
+    const [posts, setPosts] = useState<Post[] | null>(post);
     const fetchAllPosts = (cache: RequestCache = 'no-cache') => {
-        const response = getPosts(cache)
-        response.then((data) => setPosts(data))
-    }
+        const response = getPosts(cache);
+        response.then((data) => setPosts(data));
+    };
     useEffect(() => {
-        fetchAllPosts('default')
-    }, [])
+        fetchAllPosts('default');
+    }, []);
 
     return posts ? (
         <Grid container spacing={2}>
@@ -103,7 +104,7 @@ const PostList: React.FC<PostListProps> = ({ post = null }) => {
         </Grid>
     ) : (
         <Loader loading={true} />
-    )
-}
+    );
+};
 
-export default PostList
+export default PostList;

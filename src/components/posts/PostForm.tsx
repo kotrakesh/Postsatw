@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-import { Box, Grid } from '@mui/material'
-import { Post } from '../../models/post'
-import { Button, InputField } from '../atoms'
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { Box, CircularProgress, Grid } from '@mui/material';
+import { Post } from '../../models/post';
+import { Button, InputField } from '../atoms';
 
 interface PostFormProps {
-    post?: Post | null //for edit optional
-    onSubmit: (data: Post) => void
-    resetFlag?: boolean
-    setResetFlag?: (flag: boolean) => void
+    post?: Post | null; //for edit optional
+    onSubmit: (data: Post) => void;
+    resetFlag?: boolean;
+    loading?: boolean;
+    setResetFlag?: (flag: boolean) => void;
 }
 
 const PostForm: React.FC<PostFormProps> = ({
@@ -16,22 +17,23 @@ const PostForm: React.FC<PostFormProps> = ({
     onSubmit,
     resetFlag = false,
     setResetFlag,
+    loading = false,
 }) => {
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors },
-    } = useForm<Post>({ defaultValues: post || {} })
+    } = useForm<Post>({ defaultValues: post || {} });
 
     const handleFormSubmit = (data: Post) => {
-        onSubmit(data)
-    }
+        onSubmit(data);
+    };
 
     useEffect(() => {
-        resetFlag && reset()
-        !!setResetFlag && setResetFlag(false)
-    }, [resetFlag, reset, setResetFlag])
+        resetFlag && reset();
+        !!setResetFlag && setResetFlag(false);
+    }, [resetFlag, reset, setResetFlag]);
     return (
         <Grid container spacing={2} justifyContent="center">
             <Grid item xs={10}>
@@ -126,14 +128,16 @@ const PostForm: React.FC<PostFormProps> = ({
                         <Button
                             onClick={handleSubmit(handleFormSubmit)}
                             variant="contained"
+                            disabled={loading}
                         >
                             {post ? 'Update' : 'Add'}
+                            {loading && <CircularProgress size="100%" />}
                         </Button>
                     </form>
                 </Box>
             </Grid>
         </Grid>
-    )
-}
+    );
+};
 
-export default PostForm
+export default PostForm;

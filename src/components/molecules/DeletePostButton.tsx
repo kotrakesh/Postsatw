@@ -10,6 +10,7 @@ const DeletePostButton: React.FC<DeletePostButtonProps> = ({
     confirmCallBack,
 }) => {
     const [open, setOpen] = useState<boolean>(false)
+
     const showDeleteDialog = () => {
         setOpen(true)
     }

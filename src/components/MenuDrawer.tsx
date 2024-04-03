@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Drawer } from '@mui/material'
-import MenuList from './MenuList'
+import React, { useState } from 'react';
+import { Drawer } from '@mui/material';
+import MenuList from './MenuList';
 
 const MenuDrawer: React.FC = () => {
-    const [open, setOpen] = useState(true)
-    const drawerWidth = 240
+    const [open, setOpen] = useState(true);
+    const drawerWidth = 240;
     const toggleDrawer = (newOpen: boolean) => () => {
-        setOpen(newOpen)
-    }
+        setOpen(newOpen);
+    };
     return (
         <Drawer
             open={open}
@@ -27,7 +27,7 @@ const MenuDrawer: React.FC = () => {
         >
             <MenuList />
         </Drawer>
-    )
-}
+    );
+};
 
-export default MenuDrawer
+export default MenuDrawer;

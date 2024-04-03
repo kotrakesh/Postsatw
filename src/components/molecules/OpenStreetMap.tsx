@@ -1,15 +1,15 @@
-import React from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { Box } from '@mui/material'
-import 'leaflet/dist/leaflet.css'
-import { Post } from '../../models/post'
-import { isValidLat, isValidLong } from '../../utils/validation'
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Box } from '@mui/material';
+import 'leaflet/dist/leaflet.css';
+import { Post } from '../../models/post';
+import { isValidLat, isValidLong } from '../../utils/validation';
 interface OpenStreetMapProps {
-    posts: Post[]
-    centerLat: number
-    centerLong: number
-    zoom?: number
-    width?: string
+    posts: Post[];
+    centerLat: number;
+    centerLong: number;
+    zoom?: number;
+    width?: string;
 }
 const OpenStreetMap: React.FC<OpenStreetMapProps> = ({
     posts,
@@ -55,11 +55,11 @@ const OpenStreetMap: React.FC<OpenStreetMapProps> = ({
                                     <a href={`/details/${post.id}`}>Details</a>
                                 </Popup>
                             </Marker>
-                        )
+                        );
                     })}
             </MapContainer>
         </Box>
-    )
-}
+    );
+};
 
-export default OpenStreetMap
+export default OpenStreetMap;

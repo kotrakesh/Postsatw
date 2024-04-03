@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { Box } from '@mui/material'
-import OpenStreetMap from '../molecules/OpenStreetMap'
-import { getPosts } from '../../services/postApiService'
-import { Post } from '../../models/post'
+import React, { useEffect, useState } from 'react';
+import { Box } from '@mui/material';
+import OpenStreetMap from '../molecules/OpenStreetMap';
+import { getPosts } from '../../services/postApiService';
+import { Post } from '../../models/post';
 
 const PostOnMap: React.FC = () => {
-    const [posts, setPosts] = useState<Post[] | null>([])
+    const [posts, setPosts] = useState<Post[] | null>([]);
     useEffect(() => {
-        getPosts().then((data) => setPosts(data))
-    }, [])
+        getPosts().then((data) => setPosts(data));
+    }, []);
 
     return (
         <Box>
@@ -23,7 +23,7 @@ const PostOnMap: React.FC = () => {
                 )}
             </section>
         </Box>
-    )
-}
+    );
+};
 
-export default PostOnMap
+export default PostOnMap;

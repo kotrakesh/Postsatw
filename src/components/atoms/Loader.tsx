@@ -1,12 +1,17 @@
-import React from 'react'
-import { CircularProgress, Typography, Box } from '@mui/material'
+import React from 'react';
+import { CircularProgress, Typography, Box } from '@mui/material';
 
 interface LoaderProps {
-    loading: boolean
-    message?: string
+    loading: boolean;
+    message?: string;
+    size?: number;
 }
 
-const Loader: React.FC<LoaderProps> = ({ loading, message = 'Loading...' }) => {
+const Loader: React.FC<LoaderProps> = ({
+    loading,
+    message = 'Loading...',
+    size,
+}) => {
     if (loading) {
         return (
             <Box
@@ -20,9 +25,9 @@ const Loader: React.FC<LoaderProps> = ({ loading, message = 'Loading...' }) => {
                     {message}
                 </Typography>
             </Box>
-        )
+        );
     }
-    return null
-}
+    return null;
+};
 
-export default Loader
+export default Loader;

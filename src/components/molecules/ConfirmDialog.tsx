@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
     Dialog,
     DialogTitle,
@@ -7,14 +7,14 @@ import {
     Box,
     IconButton,
     Typography,
-} from '@mui/material'
-import CloseIcon from '@mui/icons-material/Close'
-import { Button } from '../atoms'
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { Button } from '../atoms';
 interface ConfirmDialogProps {
-    message: string
-    onConfirm: () => void
-    open?: boolean
-    onClose: () => void
+    message: string;
+    onConfirm: () => void;
+    open?: boolean;
+    onClose: () => void;
 }
 const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
     message,
@@ -46,7 +46,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
                 </Button>
             </DialogActions>
         </Dialog>
-    )
-}
+    );
+};
 
-export default ConfirmDialog
+export default ConfirmDialog;
