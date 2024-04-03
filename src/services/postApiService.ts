@@ -6,8 +6,10 @@ export const getPosts = async (
     cache?: RequestCache
 ): Promise<Post[] | null> => {
     const url = `${API_URL}/api/v1/posts`;
-    const response = await fetch(url, { cache: !!cache ? cache : 'default' });
     try {
+        const response = await fetch(url, {
+            cache: !!cache ? cache : 'default',
+        });
         if (!response.ok) {
             console.error(
                 `Error fetching data: ${response.status} ${response.statusText}`
@@ -32,8 +34,8 @@ export const getPosts = async (
 
 export const getPost = async (id: number): Promise<Post | null> => {
     const url = `${API_URL}/api/v1/posts/${id}`;
-    const response = await fetch(url);
     try {
+        const response = await fetch(url);
         if (!response.ok) {
             console.error(
                 `Error fetching data: ${response.status} ${response.statusText}`
@@ -50,7 +52,7 @@ export const getPost = async (id: number): Promise<Post | null> => {
         return data;
     } catch (error) {
         console.error('Error:', error);
-        enqueueSnackbar(`Error getting posts:${error}`, { variant: 'error' });
+        enqueueSnackbar(`Error getting post:${error}`, { variant: 'error' });
 
         return null;
     }

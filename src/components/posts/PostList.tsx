@@ -17,6 +17,8 @@ interface PostListProps {
     post?: Post[];
 }
 const PostList: React.FC<PostListProps> = ({ post = null }) => {
+    const [showError, setShowError] = useState(false);
+
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID' },
         {
@@ -80,12 +82,20 @@ const PostList: React.FC<PostListProps> = ({ post = null }) => {
     const [posts, setPosts] = useState<Post[] | null>(post);
     const fetchAllPosts = (cache: RequestCache = 'no-cache') => {
         const response = getPosts(cache);
-        response.then((data) => setPosts(data));
+        response.then((data) => {
+            if (data) {
+                setPosts(data);
+            } else {
+                setShowError(true);
+            }
+        });
     };
     useEffect(() => {
         fetchAllPosts('default');
     }, []);
-
+    if (showError) {
+        return <p> Posts data not found </p>;
+    }
     return posts ? (
         <Grid container spacing={2}>
             <Grid item xs={10}>

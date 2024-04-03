@@ -14,12 +14,14 @@ const PostOnMap: React.FC = () => {
         <Box>
             map
             <section>
-                {posts && (
+                {posts ? (
                     <OpenStreetMap
                         posts={posts}
                         centerLat={48.7758}
                         centerLong={9.1829}
                     />
+                ) : (
+                    <p>No data to show on map</p>
                 )}
             </section>
         </Box>

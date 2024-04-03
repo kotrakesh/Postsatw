@@ -11,9 +11,11 @@ const PostAdd: React.FC = () => {
     const handleAddPost = (data: Post) => {
         setLoading(true);
         let response = savePost(data);
-        response.then(() => {
-            enqueueSnackbar('Post added succefully!');
-            setResetFlag(true);
+        response.then((data) => {
+            if (data) {
+                enqueueSnackbar('Post added succefully!');
+                setResetFlag(true);
+            }
             setLoading(false);
         });
     };
